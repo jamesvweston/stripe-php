@@ -1,5 +1,5 @@
 # stripe-php
-ZZA Well Documented PHP Library For Stripe's API
+A Well Documented PHP Library For Stripe's API
 
 ## Installation
 
