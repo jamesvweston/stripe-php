@@ -1,0 +1,34 @@
+{
+  "name": "stripe-php",
+  "description": "A Well Documented PHP Library For Stripe's API",
+  "keywords": [
+    "stripe",
+    "php"
+  ],
+  "license": "MIT",
+  "type": "library",
+  "homepage": "https://github.com/jamesvweston/stripe-php",
+  "authors":[
+    {
+      "name": "James Weston",
+      "email": "james@savannah.io"
+    }
+  ],
+  "require": {
+    "netresearch/jsonmapper": "^1.4",
+    "guzzlehttp/guzzle": "^6.3"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "jamesvweston\\Stripe\\": "src"
+    }
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable" : true
+}
