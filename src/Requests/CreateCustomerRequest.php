@@ -74,8 +74,6 @@ class CreateCustomerRequest implements \JsonSerializable
      */
     public function jsonSerialize()
     {
-        //  TODO: Implement source
-
         $object['account_balance']          = $this->account_balance;
         $object['business_vat_id']          = $this->business_vat_id;
         $object['coupon']                   = $this->coupon;
