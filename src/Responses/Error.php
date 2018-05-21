@@ -3,13 +3,18 @@
 namespace jamesvweston\Stripe\Responses;
 
 
-class Error
+class Error implements \JsonSerializable
 {
 
     /**
      * @var string
      */
-    protected $type;
+    protected $code;
+
+    /**
+     * @var string
+     */
+    protected $doc_url;
 
     /**
      * @var string
@@ -22,19 +27,54 @@ class Error
     protected $param;
 
     /**
-     * @return string
+     * @var string
      */
-    public function getType(): string
+    protected $type;
+
+    /**
+     * @return array
+     */
+    public function jsonSerialize()
     {
-        return $this->type;
+        $object['code']                 = $this->code;
+        $object['doc_url']              = $this->doc_url;
+        $object['message']              = $this->message;
+        $object['param']                = $this->param;
+        $object['type']                 = $this->type;
+
+        return $object;
     }
 
     /**
-     * @param string $type
+     * @return string
      */
-    public function setType(string $type): void
+    public function getCode(): string
     {
-        $this->type = $type;
+        return $this->code;
+    }
+
+    /**
+     * @param string $code
+     */
+    public function setCode(string $code): void
+    {
+        $this->code = $code;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDocUrl(): string
+    {
+        return $this->doc_url;
+    }
+
+    /**
+     * @param string $doc_url
+     */
+    public function setDocUrl(string $doc_url): void
+    {
+        $this->doc_url = $doc_url;
     }
 
     /**
@@ -67,6 +107,22 @@ class Error
     public function setParam(string $param): void
     {
         $this->param = $param;
+    }
+
+    /**
+     * @return string
+     */
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type): void
+    {
+        $this->type = $type;
     }
 
 }

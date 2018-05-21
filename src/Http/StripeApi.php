@@ -64,7 +64,8 @@ class StripeApi
 
             if (isset($result['error']))
             {
-                $error              = new Error($result['error']);
+                $json_mapper        = new \JsonMapper();
+                $error              = $json_mapper->map($result['error'], new Error());
                 throw new StripeException($error, $ex->getResponse()->getStatusCode());
             }
             else
