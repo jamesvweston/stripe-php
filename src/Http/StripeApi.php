@@ -60,12 +60,12 @@ class StripeApi
         }
         catch (ClientException $ex)
         {
-            $result                 = json_decode($ex->getResponse()->getBody()->getContents(), true);
+            $result                 = json_decode($ex->getResponse()->getBody()->getContents());
 
-            if (isset($result['error']))
+            if (isset($result->error))
             {
                 $json_mapper        = new \JsonMapper();
-                $error              = $json_mapper->map($result['error'], new Error());
+                $error              = $json_mapper->map($result->error, new Error());
                 throw new StripeException($error, $ex->getResponse()->getStatusCode());
             }
             else
