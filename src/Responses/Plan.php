@@ -22,6 +22,11 @@ class Plan
     protected $object;
 
     /**
+     * @var bool
+     */
+    protected $active;
+
+    /**
      * The amount in cents to be charged on the interval specified.
      * @var int
      */
@@ -115,6 +120,22 @@ class Plan
     public function setObject(string $object): void
     {
         $this->object = $object;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getActive(): bool
+    {
+        return $this->active;
+    }
+
+    /**
+     * @param bool $active
+     */
+    public function setActive(bool $active): void
+    {
+        $this->active = $active;
     }
 
     /**
