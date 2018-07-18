@@ -5,6 +5,7 @@ namespace jamesvweston\Stripe\Api;
 
 use jamesvweston\Stripe\Exceptions\StripeException;
 use jamesvweston\Stripe\Requests\CreatePlanRequest;
+use jamesvweston\Stripe\Requests\UpdatePlanRequest;
 use jamesvweston\Stripe\Responses\Plan;
 use jamesvweston\Stripe\Responses\PlanCollection;
 
@@ -41,6 +42,18 @@ class PlanApi extends BaseApi
     public function create ($request)
     {
         $data                           = $this->api->makeHttpRequest('post', 'plans', $request);
+        return $this->json_mapper->map($data, new Plan());
+    }
+
+    /**
+     * @param UpdatePlanRequest|array $request
+     * @param string    $id
+     * @return Plan
+     * @throws StripeException
+     */
+    public function update ($request, $id)
+    {
+        $data                           = $this->api->makeHttpRequest('put', 'plans/' . $id, $request);
         return $this->json_mapper->map($data, new Plan());
     }
 
