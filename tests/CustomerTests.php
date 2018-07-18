@@ -3,13 +3,14 @@
 namespace Tests;
 
 
-class CustomerTests extends \PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class CustomerTests extends TestCase
 {
 
     public function testGet ()
     {
-        echo 'herehereherehereherehereherehereherehereherehereherehereherehereherehereherehereherehereherehere';
-        die;
+
     }
 
 }
