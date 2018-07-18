@@ -43,4 +43,16 @@ class PlanApi extends BaseApi
         $data                           = $this->api->makeHttpRequest('post', 'plans', $request);
         return $this->json_mapper->map($data, new Plan());
     }
+
+    /**
+     * @param   string  $id
+     * @return  null
+     * @throws  StripeException
+     */
+    public function delete ($id)
+    {
+        $this->api->makeHttpRequest('delete', 'plans/' . $id);
+        return null;
+    }
+
 }
