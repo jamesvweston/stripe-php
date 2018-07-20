@@ -93,18 +93,22 @@ class CustomerApi extends BaseApi
     /**
      * @param   string  $customer_id
      * @param   string  $card_id
-     * @param   CreateCardRequest $request
+     * @param   CreateCardRequest|array $request
      * @return  Card
      * @throws  StripeException
      */
-    public function updateCard ($customer_id, $card_id, CreateCardRequest $request)
+    public function updateCard ($customer_id, $card_id, $request)
     {
-        if (isset($request['object']))
-            unset($request['object']);
-        if (isset($request['number']))
-            unset($request['number']);
-        if (isset($request['cvc']))
-            unset($request['cvc']);
+        if ($request instanceof CreateCardRequest)
+        {
+            $request                    = $request->jsonSerialize();
+            if (isset($request['object']))
+                unset($request['object']);
+            if (isset($request['number']))
+                unset($request['number']);
+            if (isset($request['cvc']))
+                unset($request['cvc']);
+        }
 
         $data                           = $this->api->makeHttpRequest('post', 'customers/' . $customer_id . '/sources/' . $card_id, $request);
         return $this->json_mapper->map($data, new Card());
