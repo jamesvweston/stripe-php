@@ -8,6 +8,7 @@ use jamesvweston\Stripe\Requests\CreateCardRequest;
 use jamesvweston\Stripe\Requests\CreateCustomerRequest;
 use jamesvweston\Stripe\Requests\GetCustomersRequest;
 use jamesvweston\Stripe\Responses\Card;
+use jamesvweston\Stripe\Responses\CardCollection;
 use jamesvweston\Stripe\Responses\Customer;
 use jamesvweston\Stripe\Responses\CustomerCollection;
 
@@ -70,6 +71,13 @@ class CustomerApi extends BaseApi
         return null;
     }
 
+
+    public function getCards ($customer_id)
+    {
+        $data                           = $this->api->makeHttpRequest('post', 'customers/' . $customer_id . '/sources');
+        return $this->json_mapper->map($data, new CardCollection());
+    }
+
     /**
      * @param   string  $customer_id
      * @param   CreateCardRequest $request
@@ -78,7 +86,7 @@ class CustomerApi extends BaseApi
      */
     public function createCard ($customer_id, CreateCardRequest $request)
     {
-        $data                           = $this->api->makeHttpRequest('post', 'customers/' . $customer_id . '/sources', ['source' => $request]);
+        $data                           = $this->api->makeHttpRequest('post', 'customers/' . $customer_id . '/sources', ['source' => $request->jsonSerialize()]);
         return $this->json_mapper->map($data, new Card());
     }
 
