@@ -53,7 +53,7 @@ class PlanApi extends BaseApi
      */
     public function update ($request, $id)
     {
-        $data                           = $this->api->makeHttpRequest('put', 'plans/' . $id, $request);
+        $data                           = $this->api->makeHttpRequest('post', 'plans/' . $id, $request);
         return $this->json_mapper->map($data, new Plan());
     }
 
