@@ -7,12 +7,12 @@ class StripeConfiguration
 {
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $key;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $secret;
 
@@ -39,33 +39,33 @@ class StripeConfiguration
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getKey(): string
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     /**
-     * @param string $key
+     * @param null|string $key
      */
-    public function setKey(string $key): void
+    public function setKey(?string $key): void
     {
         $this->key = $key;
     }
 
     /**
-     * @return string
+     * @return null|string
      */
-    public function getSecret(): string
+    public function getSecret(): ?string
     {
         return $this->secret;
     }
 
     /**
-     * @param string $secret
+     * @param null|string $secret
      */
-    public function setSecret(string $secret): void
+    public function setSecret(?string $secret): void
     {
         $this->secret = $secret;
     }
