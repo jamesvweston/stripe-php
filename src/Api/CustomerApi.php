@@ -80,13 +80,14 @@ class CustomerApi extends BaseApi
 
     /**
      * @param   string  $customer_id
-     * @param   CreateCardRequest $request
+     * @param   CreateCardRequest|array $request
      * @return  Card
      * @throws  StripeException
      */
-    public function createCard ($customer_id, CreateCardRequest $request)
+    public function createCard ($customer_id, $request)
     {
-        $data                           = $this->api->makeHttpRequest('post', 'customers/' . $customer_id . '/sources', ['source' => $request->jsonSerialize()]);
+        $request                        = $request instanceof \JsonSerializable ? $request->jsonSerialize() : $request;
+        $data                           = $this->api->makeHttpRequest('post', 'customers/' . $customer_id . '/sources', $request);
         return $this->json_mapper->map($data, new Card());
     }
 
