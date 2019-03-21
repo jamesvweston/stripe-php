@@ -56,7 +56,7 @@ class Invoice extends BaseObject
     protected $billing_reason;
 
     /**
-     * @var string
+     * @var string|Charge
      */
     protected $charge;
 
@@ -335,17 +335,17 @@ class Invoice extends BaseObject
     }
 
     /**
-     * @return string
+     * @return Charge|string
      */
-    public function getCharge(): string
+    public function getCharge()
     {
         return $this->charge;
     }
 
     /**
-     * @param string $charge
+     * @param Charge|string $charge
      */
-    public function setCharge(string $charge): void
+    public function setCharge($charge): void
     {
         $this->charge = $charge;
     }
