@@ -111,7 +111,7 @@ class Invoice extends BaseObject
     protected $footer;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $hosted_invoice_url;
 
@@ -511,17 +511,17 @@ class Invoice extends BaseObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getHostedInvoiceUrl(): string
+    public function getHostedInvoiceUrl(): ?string
     {
         return $this->hosted_invoice_url;
     }
 
     /**
-     * @param string $hosted_invoice_url
+     * @param string|null $hosted_invoice_url
      */
-    public function setHostedInvoiceUrl(string $hosted_invoice_url): void
+    public function setHostedInvoiceUrl(?string $hosted_invoice_url): void
     {
         $this->hosted_invoice_url = $hosted_invoice_url;
     }
