@@ -181,7 +181,7 @@ class Invoice extends BaseObject
     protected $subtotal;
 
     /**
-     * @var int
+     * @var int|null
      */
     protected $tax;
 
@@ -735,17 +735,17 @@ class Invoice extends BaseObject
     }
 
     /**
-     * @return int
+     * @return int|null
      */
-    public function getTax(): int
+    public function getTax(): ?int
     {
         return $this->tax;
     }
 
     /**
-     * @param int $tax
+     * @param int|null $tax
      */
-    public function setTax(int $tax): void
+    public function setTax(?int $tax): void
     {
         $this->tax = $tax;
     }
