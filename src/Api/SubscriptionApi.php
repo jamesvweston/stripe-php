@@ -51,12 +51,14 @@ class SubscriptionApi extends BaseApi
 
     /**
      * @param   string                      $subscription_id
-     * @param   CreateSubscriptionRequest $request
+     * @param   CreateSubscriptionRequest|array $request
      * @return  Subscription
      * @throws  StripeException
      */
     public function update ($subscription_id, CreateSubscriptionRequest $request)
     {
+        $request                 = ($request instanceof \JsonSerializable) ? $request->jsonSerialize() : $request;
+
         if (isset($request['customer']))
             unset($request['customer']);
 
