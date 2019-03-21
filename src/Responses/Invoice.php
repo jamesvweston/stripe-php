@@ -90,7 +90,9 @@ class Invoice extends BaseObject
      */
     protected $description;
 
-
+    /**
+     * @var int|null
+     */
     protected $discount;
 
     /**
@@ -445,17 +447,17 @@ class Invoice extends BaseObject
     }
 
     /**
-     * @return mixed
+     * @return int|null
      */
-    public function getDiscount()
+    public function getDiscount(): ?int
     {
         return $this->discount;
     }
 
     /**
-     * @param mixed $discount
+     * @param int|null $discount
      */
-    public function setDiscount($discount): void
+    public function setDiscount(?int $discount): void
     {
         $this->discount = $discount;
     }
