@@ -7,7 +7,7 @@ class BaseObject
 {
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $id;
 
@@ -27,17 +27,17 @@ class BaseObject
     protected $livemode;
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getId(): string
+    public function getId(): ?string
     {
         return $this->id;
     }
 
     /**
-     * @param string $id
+     * @param string|null $id
      */
-    public function setId(string $id): void
+    public function setId(?string $id): void
     {
         $this->id = $id;
     }
