@@ -151,7 +151,7 @@ class Invoice extends BaseObject
     protected $period_start;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $receipt_number;
 
@@ -639,17 +639,17 @@ class Invoice extends BaseObject
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getReceiptNumber(): string
+    public function getReceiptNumber(): ?string
     {
         return $this->receipt_number;
     }
 
     /**
-     * @param string $receipt_number
+     * @param string|null $receipt_number
      */
-    public function setReceiptNumber(string $receipt_number): void
+    public function setReceiptNumber(?string $receipt_number): void
     {
         $this->receipt_number = $receipt_number;
     }
