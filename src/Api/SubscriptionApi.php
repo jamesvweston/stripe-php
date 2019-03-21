@@ -55,7 +55,7 @@ class SubscriptionApi extends BaseApi
      * @return  Subscription
      * @throws  StripeException
      */
-    public function update ($subscription_id, CreateSubscriptionRequest $request)
+    public function update ($subscription_id, $request)
     {
         $request                 = ($request instanceof \JsonSerializable) ? $request->jsonSerialize() : $request;
 
