@@ -18,6 +18,8 @@ class InvoiceApi extends BaseApi
      */
     public function get ($request = [])
     {
+        $request                 = ($request instanceof \JsonSerializable) ? $request->jsonSerialize() : $request;
+        $request['expand[]']     = 'data.charge';
         $data                           = $this->api->makeHttpRequest('get', 'invoices', $request);
         return $this->json_mapper->map($data, new InvoiceCollection());
     }
