@@ -94,6 +94,14 @@ class CreateSubscriptionRequest implements \JsonSerializable
     protected $trial_end;
 
     /**
+     * Indicates if a plan’s trial_period_days should be applied to the subscription.
+     * Setting trial_end per subscription is preferred, and this defaults to false.
+     * Setting this flag to true together with trial_end is not allowed.
+     * @var bool|null
+     */
+    private $trial_from_plan;
+
+    /**
      * Integer representing the number of trial period days before the customer is charged for the first time.
      * @var int|null
      */
@@ -121,6 +129,7 @@ class CreateSubscriptionRequest implements \JsonSerializable
         $object['source']                   = $this->source;
         $object['tax_percent']              = $this->tax_percent;
         $object['trial_end']                = $this->trial_end;
+        $object['trial_from_plan']          = $this->trial_from_plan;
         $object['trial_period_days']        = $this->trial_period_days;
 
         return $object;
@@ -333,4 +342,21 @@ class CreateSubscriptionRequest implements \JsonSerializable
     {
         $this->trial_period_days = $trial_period_days;
     }
+
+    /**
+     * @return bool|null
+     */
+    public function getTrialFromPlan(): ?bool
+    {
+        return $this->trial_from_plan;
+    }
+
+    /**
+     * @param bool|null $trial_from_plan
+     */
+    public function setTrialFromPlan(?bool $trial_from_plan): void
+    {
+        $this->trial_from_plan = $trial_from_plan;
+    }
+
 }
